@@ -75,10 +75,13 @@ def Morb(data,Efermi, evalJ0=True,evalJ1=True,evalJ2=True):
 
 
 def tensor_D(data,Efermi):
-    return IterateEf(data.derOmegaTr2,data,Efermi,TRodd=False,Iodd=True)
+    return IterateEf(data.derOmegaTr,data,Efermi,TRodd=False,Iodd=True)
 
 def Hplus(data,Efermi):
-    return IterateEf(data.derHplusTr2,data,Efermi,TRodd=False,Iodd=True)
+    return IterateEf(data.derHplusTr,data,Efermi,TRodd=False,Iodd=True)
+
+def Hplus_fz(data,Efermi):
+    return IterateEf(data.derHplusTr,data,Efermi,TRodd=False,Iodd=True)
 
 def tensor_K(data,Efermi):
     Hp = Hplus(data,Efermi).data
@@ -86,6 +89,11 @@ def tensor_K(data,Efermi):
     tensor_K = - elementary_charge**2/(2*hbar)*(Hp - 2*Efermi[:,None,None]*D  )
     return result.EnergyResult(Efermi,tensor_K,TRodd=False,Iodd=True)
 
+def tensor_K_fz(data,Efermi):
+    Hp = Hplus_fz(data,Efermi).data
+    D = tensor_D(data,Efermi).data
+    tensor_K = - elementary_charge**2/(2*hbar)*(Hp - 2*Efermi[:,None,None]*D  )
+    return result.EnergyResult(Efermi,tensor_K,TRodd=False,Iodd=True)
 #########################
 ####  Private part ######
 #########################

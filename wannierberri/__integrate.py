@@ -47,6 +47,7 @@ calculators_trans={
          'berry_dipole'        : fermisea2.berry_dipole ,
          'berry_dipole_fsurf'      : nonabelian.berry_dipole,
          'gyrotropic_Korb'  : fermisea2.tensor_K,
+         'gyrotropic_Korb_fz'  : fermisea2.tensor_K_fz,
 
          'gyrotropic_Kspin'  : fermisea2.gyrotropic_Kspin,
          'gyrotropic_Korb_fsurf'   : nonabelian.gyrotropic_Korb,
